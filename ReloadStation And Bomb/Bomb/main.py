@@ -1,7 +1,7 @@
 #      #
 # Bomb # 
 #      #
-
+import RPi.GPIO as GPIO
 import time
 import os
 import sys
@@ -67,12 +67,16 @@ def StartTimer():
                 
         if u == 0:
             print('Bomb got defused!\n\n')
+            GPIO.output(GreenLedPin, True)
             time.sleep(5)
+            GPIO.output(GreenLedPin, False)
             main()
         
     else:
         print('BOOOOOOOOMMM!!!\n\n')
+        GPIO.output(RedLedPin, True)
         time.sleep(5)
+        GPIO.output(RedLedPin, False)
         main()
 
 def PlantBomb():
@@ -178,6 +182,10 @@ if __name__ == '__main__':
         
     except Exception as e:
         print(e)
+    finally:
+        GPIO.output(RedLedPin, False)
+        GPIO.output(GreenLedPin, False)
+        GPIO.cleanup()
     
             
 main()
