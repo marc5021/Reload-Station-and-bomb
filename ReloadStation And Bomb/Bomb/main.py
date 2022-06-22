@@ -26,7 +26,7 @@ BombPlanted = False
 waiting = True
 start = True
 
-SetupGPIO()
+
 
 
 def StartTimer():
@@ -187,5 +187,5 @@ if __name__ == '__main__':
         GPIO.output(GreenLedPin, False)
         GPIO.cleanup()
     
-            
+SetupGPIO()            
 main()
