@@ -168,7 +168,8 @@ def main():
                 print(e)
                 
             
-            
+SetupGPIO()   
+
 if __name__ == '__main__':
     try:
         pn532 = PN532_UART(debug=False, reset=20)
@@ -182,10 +183,7 @@ if __name__ == '__main__':
         
     except Exception as e:
         print(e)
-    finally:
-        GPIO.output(RedLedPin, False)
-        GPIO.output(GreenLedPin, False)
-        GPIO.cleanup()
+
     
-SetupGPIO()            
+         
 main()
